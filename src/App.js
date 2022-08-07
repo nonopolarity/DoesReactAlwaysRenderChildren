@@ -1,9 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-import {useState, useEffect} from 'react';
+import logo from "./logo.svg";
+import "./App.css";
+import { useState, useEffect } from "react";
+import TheTimeNow from "./TheTimeNow";
 
 function App() {
-
   const [timeNow, setTimeNow] = useState(new Date());
 
   useEffect(() => {
@@ -14,7 +14,10 @@ function App() {
   }, []);
 
   return (
-    <div>Time now is {timeNow.toLocaleTimeString()}</div>
+    <div>
+      <div>Time now is {timeNow.toLocaleTimeString()}</div>
+      <TheTimeNow /><TheTimeNow />
+    </div>
   );
 }
 
