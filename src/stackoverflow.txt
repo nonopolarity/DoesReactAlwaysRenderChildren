@@ -1,0 +1,15 @@
+I think the fact is that, [when a parent component re-renders in React, in general, all the children components re-render as well][1].  
+
+I think it is not the same to say, that React actually change the DOM, as I think the mechanism is that React use the previous virtual DOM to compare with the new virtual DOM, and update only the **minimal** actual DOM node as on `document.documentElement` as needed.
+
+1. However, can't we argue that, if a child is `<Foo />` and since there is no props passed to it, then `<Foo />` really should not change, and it is wasteful to call `Foo()`? (say, if it is a functional component, or call the `render()` method if it is a class component.)
+
+2. Now since all children re-renders, that means their children also get re-rendered. That would mean the whole subtree get re-rendered
+
+3. If that's the rule, isn't it true that since `<MyContext.Provider value={someValue}>` is a component, then if `someValue` changes (as compared by `Object.is()`, then this `<MyContext.Provider>` component re-renders (or doesn't it actually re-renders?), then the whole subtree re-renders too. But I think the docs says, only the children who consumes this context value get re-rendered?
+
+
+
+  [1]: https://stackoverflow.com/questions/40819992/react-parent-component-re-renders-all-children-even-those-that-havent-changed
+
+  
